@@ -1,73 +1,43 @@
 def main
-
-t = gets.chomp.to_i
-t.times do
-	n = gets.chomp.to_i
-	number = []
-	number = gets.split(' ').map(&:to_i)
-	result = 0
-	tmp = 0
-	while true
-		check = true
-		i = 0
-		while i < n - 1 && check == true
-			if number[i] > number[i + 1]
-				check = false
-				break
-			end
-			i += 1
-		end
-
-		if check
+	t = gets.chomp.to_i
+	t.times do
+	  n = gets.chomp.to_i
+	  number = gets.split(' ').map(&:to_i)
+	  result = 0
+	  tmp = 0
+	  while true
+		sorted = true
+		(n-1).times do |i|
+		  if number[i] > number[i + 1]
+			sorted = false
 			break
 		  end
-	puts "result = #{result}"
+		end
 
+		if sorted == true
+			puts result
+			break
+		end
 
-		if  (result == 0 && number[n - 1] != 1) ||result % 2 == 1
+		if  number[0] == 1
+			k = 1
+		elsif number[n - 1] == n
+			k = n
+		elsif result == 0
+			k = n / 2 + 1
+		elsif result % 2 == 1
 			k = n
 		else
 			k = 1
 		end
-		i = 0
 
-		n.times do
-			if tmp != i + 1 && number[i] == i + 1
-				k = i + 1
-			end
-			i += 1
-		end
-		puts "k = #{k}"
-		i = 0
-		j = 0
-			while j < k - 1
-				i = 0
-				while i < k - 1
-					if k - 1!= i && k - 2 != i && number[i] > number[i + 1]
-						number[i], number[i + 1] = number[i + 1], number[i]
-					end
-					i += 1
-				end
-				j += 1
-			end
-			i = k
-			j = k
-			while j < n
-				i = k
-				while  i < n - 1
-					if k - 1 != i && number[i] > number[i + 1]
-						number[i], number[i + 1] = number[i + 1], number[i]
-					end
-					i += 1
-				end
-				j += 1
-			end
 
-		p number
-		result += 1
-		tmp = k
+		left_part = number[0...k - 1].sort
+		right_part = number[k...n].sort
+
+		number = left_part + [number[k-1]] + right_part
+	  result += 1
+	  end
 	end
-	puts result
-end
 end
 main
