@@ -13,5 +13,5 @@ def main
 	end
 
 	puts max_len
-  end
-  main
+end
+main
