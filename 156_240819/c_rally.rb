@@ -1,13 +1,14 @@
-
 n = gets.chomp.to_i
 x = gets.split(' ').map(&:to_i)
 
-result = 0
+ans = Float::INFINITY
 
-p = x.sum / x.length
-
-n.times do |i|
-	result += (x[i] - p) ** 2
+(1..100).each do |p|
+  current = 0
+  x.each do |xi|
+    current += (xi - p) ** 2
+  end
+  ans = [ans, current].min
 end
 
-puts result
+puts ans
