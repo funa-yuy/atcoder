@@ -1,4 +1,4 @@
-def is_square_number?(num)
+def square_number?(num)
 	sqrt = Math.sqrt(num)
 	sqrt == sqrt.to_i
   end
