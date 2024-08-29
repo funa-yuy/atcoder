@@ -6,5 +6,5 @@ def square_number?(num)
 	input = gets.split
 	ab = input.join.to_i
 
-	puts is_square_number?(ab) ? "Yes" : "No"
+	puts square_number?(ab) ? "Yes" : "No"
 
