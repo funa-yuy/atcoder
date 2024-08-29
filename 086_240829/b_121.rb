@@ -1,10 +1,10 @@
 def square_number?(num)
-	sqrt = Math.sqrt(num)
-	sqrt == sqrt.to_i
+	root = Math.sqrt(num)
+	root == root.to_i
   end
 
-	input = gets.split
-	ab = input.join.to_i
+input = gets.split
+ab = input.join.to_i
 
-	puts square_number?(ab) ? "Yes" : "No"
+puts square_number?(ab) ? "Yes" : "No"
 
